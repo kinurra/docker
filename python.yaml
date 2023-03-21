@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-demo
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      python: web
+  template:
+    metadata:
+      labels:
+        python: web
+    spec:
+      containers:
+      - name: python-site
+        image: kinurra/python-app
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-entrypoint
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    python: web
+  ports:
+  - port: 5000
+    targetPort: 5000
+    nodePort: 30003

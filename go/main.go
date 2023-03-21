@@ -11,7 +11,7 @@ func EchoHandler(writer http.ResponseWriter, request *http.Request) {
 }
 
 func main() {
-	log.Println("starting server, listening on port 8080")
+	log.Println("starting server, listening on port 8001")
 	http.HandleFunc("/", EchoHandler)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8001", nil)
 }

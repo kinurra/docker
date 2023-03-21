@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-demo
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      go: web
+  template:
+    metadata:
+      labels:
+        go: web
+    spec:
+      containers:
+      - name: go-site
+        image: kinurra/go-app
+        imagePullPolicy: Never
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-entrypoint
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    go: web
+  ports:
+  - port: 8001
+    targetPort: 8001
+    nodePort: 30001
