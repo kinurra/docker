@@ -1,0 +1,10 @@
+version: "1.0"
+services:
+  go-service:
+    build: ./go
+    ports: 
+      - "8080:8080"
+  node-service:
+    build: ./node
+    ports:
+      - "4001:4001"
