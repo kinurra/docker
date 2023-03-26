@@ -24,10 +24,8 @@ metadata:
   name: node-entrypoint
   namespace: default
 spec:
-  type: NodePort
   selector:
     node: web
   ports:
-  - port: 4001
-    targetPort: 4001
-    nodePort: 30002
+  - port: 80
+    targetPort: 80
