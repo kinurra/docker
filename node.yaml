@@ -16,7 +16,6 @@ spec:
       containers:
       - name: node-site
         image: kinurra/node-app
-        imagePullPolicy: Never
 ---
 apiVersion: v1
 kind: Service
