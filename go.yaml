@@ -16,7 +16,6 @@ spec:
       containers:
       - name: go-site
         image: kinurra/go-app
-        imagePullPolicy: Never
 ---
 apiVersion: v1
 kind: Service
