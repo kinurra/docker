@@ -22,7 +22,7 @@ pipeline {
       steps {
         deleteDir()
         checkout scm
-        sh "cd node/ && docker build . -t docker:$BUILD_NUMBER"
+        sh "cd node/ && docker build . -t kinurra/node-app:$BUILD_NUMBER"
       }
     }
 
@@ -65,6 +65,8 @@ pipeline {
                             }
         }
         sh "echo 'Run Acceptance Tests'"
+        sh "docker push kinurra/node-app:$BUILD_NUMBER"
+        sh "docker rmi -f kinurra/node-app:$BUILD_NUMBER"
       }
     }
 
