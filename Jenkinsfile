@@ -22,6 +22,7 @@ pipeline {
       steps {
         deleteDir()
         checkout scm
+        sh "cd node/ && docker build . -t docker:$BUILD_NUMBER"
       }
     }
 
