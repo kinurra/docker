@@ -68,7 +68,7 @@ pipeline {
         sh "echo 'Run Acceptance Tests'"
         sh "docker push kinurra/node-app:$BUILD_NUMBER"
         sh "docker rmi -f kinurra/node-app:$BUILD_NUMBER"
-        sh "kubectl apply -f my-node.yaml"
+        sh "cd node/ && kubectl apply -f my-node.yaml"
       }
     }
 
