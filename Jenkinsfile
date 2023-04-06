@@ -3,7 +3,7 @@
 pipeline {
 
   agent any
-  triggers { pollSCM  '* * * * *' }
+  //triggers { pollSCM  '* * * * *' }
 
   environment {
     git_commit_message = ''
