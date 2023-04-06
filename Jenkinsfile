@@ -36,8 +36,8 @@ pipeline {
         deleteDir()
         checkout scm
         sh "echo 'Run Static Code Analysis'"
-        docker run --rm -v $PWD:$PWD -v /var/run/docker.sock:/var/run/docker.sock -w $PWD aquasec/trivy:latest image --format json --output trivy-scan.json alpine:3.10.7
-        docker run --rm -v $PWD:$PWD -w $PWD owasp/dependency-check:latest --scan $PWD --out $PWD
+        sh "docker run --rm -v $PWD:$PWD -v /var/run/docker.sock:/var/run/docker.sock -w $PWD aquasec/trivy:latest image --format json --output trivy-scan.json alpine:3.10.7"
+        sh "docker run --rm -v $PWD:$PWD -w $PWD owasp/dependency-check:latest --scan $PWD --out $PWD"
       }
     }
 
